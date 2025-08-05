@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:delivery_order/OnBoardingScreen/FirstPage.dart';
 import 'package:delivery_order/OnBoardingScreen/SecondPage.dart';
 import 'package:delivery_order/OnBoardingScreen/ThirdPage.dart';
@@ -5,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../Controller/GoogleMapScreenController.dart';
 import '../SplashScreenData/SplashScreen.dart';
 
 class BoardingScreen extends StatefulWidget {
@@ -20,10 +23,13 @@ class _BoardingScreenState extends State<BoardingScreen> {
   PageController pageController = new PageController();
   int pindex = 0;
 
+
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+
   }
 
   @override

@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:delivery_order/Controller/LoginController.dart';
 import 'package:dotted_dashed_line/dotted_dashed_line.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -241,10 +242,38 @@ class _PendingScreenState extends State<PendingScreen> {
                                     scrollDirection: Axis.vertical,
                                     itemBuilder: (context, oindex) {
                                       return Container(
+                                        padding: EdgeInsets.only(bottom: 10),
                                         width: double.infinity,
-                                        height: 80,
+                                        height: 120,
                                         child: Column(
                                           children: [
+                                            Container(
+                                              width: double.infinity,
+                                              height: 25,
+                                              decoration: BoxDecoration(
+                                                  color: loginController
+                                                      .getColor(
+                                                      order['pending'],
+                                                      order['processing'],
+                                                      order['deliver'])
+                                                      .withOpacity(0.3),
+                                                  borderRadius:
+                                                  BorderRadius.only(
+                                                      topLeft:
+                                                      Radius.circular(
+                                                          15),
+                                                      topRight:
+                                                      Radius.circular(
+                                                          15))),
+                                              child: Center(
+                                                child: Text(orderData[oindex]["restaurantName"]!=null?
+                                                "${orderData[oindex]["restaurantName"]}":"Custom Food",
+                                                    style: GoogleFonts.lexend(color: Colors.black45)),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
                                             Row(
                                               children: [
                                                 ClipRRect(
@@ -305,7 +334,7 @@ class _PendingScreenState extends State<PendingScreen> {
                                                         .center,
                                                     children: [
                                                       Container(
-                                                        width: 145,
+                                                        width: 135,
                                                         child: orderData[
                                                         oindex]
                                                         [
@@ -1070,11 +1099,18 @@ class _PendingScreenState extends State<PendingScreen> {
                                           'Error updating pending: $error');
                                     });
                                   },
-                                  child: Text(
-                                    "Processing Order",
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.white),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        "Processing Order",
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            color: Colors.white),
+                                      ),
+                                      SizedBox(width: 10,),
+                                      Icon(CupertinoIcons.arrow_right_circle_fill,size: 20,color: Colors.white,)
+                                    ],
                                   )),
                             ],
                           ),

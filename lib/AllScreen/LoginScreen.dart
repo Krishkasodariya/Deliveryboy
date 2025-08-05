@@ -552,6 +552,7 @@ class _LoginScreenState extends State<LoginScreen> {
   void login_with_email(String email, String password) async {
     try {
       EasyLoading.show();
+
       UserCredential userCredential =await FirebaseAuth.instance.signInWithEmailAndPassword(email: loginEmail.text, password: loginPassword.text);
       loginController.Setuid(userCredential.user!.uid);
 
@@ -583,7 +584,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           color: Color(0xffEF505F),
                           fontSize: 16),
                     ))));
-      } else if (e.code == 'wrong-password') {
+      }
+      else if (e.code == 'wrong-password'){
         print('---------------------------------)wrong-password');
         EasyLoading.dismiss();
         ScaffoldMessenger.of(context).showSnackBar(

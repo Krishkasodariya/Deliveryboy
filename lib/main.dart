@@ -1,3 +1,5 @@
+
+import 'package:delivery_order/Controller/GoogleMapScreenController.dart';
 import 'package:delivery_order/Controller/LoginController.dart';
 import 'package:delivery_order/OnBoardingScreen/ThirdPage.dart';
 import 'package:delivery_order/SplashScreenData/SplashScreen.dart';
@@ -15,6 +17,8 @@ Future main() async {
   await Firebase.initializeApp();
   await MobileAds.instance.initialize();
   Get.put(LoginController());
+  Get.put(GoogleMapScreenController());
+
   configLoading();
   runApp(GetMaterialApp(
     builder: EasyLoading.init(),

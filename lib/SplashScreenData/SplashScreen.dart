@@ -31,6 +31,9 @@ class _SplashScreenState extends State<SplashScreen> {
     loadAd();
     loginController.Getuid();
     loginController.Getotp();
+    loginController.AllUpdate(ref);
+    loginController.profileUpdate(ref);
+    loginController.profileData();
   }
 
   Widget build(BuildContext context) {
@@ -45,7 +48,7 @@ class _SplashScreenState extends State<SplashScreen> {
               Spacer(),
               Spacer(),
               Text(
-                "Pizza",
+                "Foodie",
                 style: GoogleFonts.calistoga(
                   fontSize: 50,
                   color: Colors.white,
@@ -152,6 +155,8 @@ class _SplashScreenState extends State<SplashScreen> {
         ),
         orientation: AppOpenAd.orientationPortrait);
   }
-
+  void ref() {
+    setState(() {});
+  }
 
 }

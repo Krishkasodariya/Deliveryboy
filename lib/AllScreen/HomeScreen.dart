@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:delivery_order/AllScreen/AllScreen.dart';
 import 'package:delivery_order/AllScreen/ConformScreen.dart';
 import 'package:delivery_order/AllScreen/PendingScreen.dart';
@@ -5,9 +6,9 @@ import 'package:delivery_order/AllScreen/ProcessingScreen.dart';
 import 'package:delivery_order/Controller/LoginController.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 
+import '../Controller/GoogleMapScreenController.dart';
 import '../Drawer/DrawerScreen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -17,21 +18,31 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen>with SingleTickerProviderStateMixin  {
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
   int index = 0;
-    TabController ?tabController;
-    LoginController loginController=Get.find();
+  TabController? tabController;
+  LoginController loginController = Get.find();
+  late Timer timer;
 
-@override
+  GoogleMapScreenController googleMapScreenController = Get.find();
+
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    googleMapScreenController.getLocation();
+
+      timer = Timer.periodic(Duration(seconds: 10), (timer) {
+        googleMapScreenController.getLocation();
+      });
+
     tabController = TabController(length: 4, vsync: this);
     tabController?.addListener(_handleTabSelection);
   }
+
   void _handleTabSelection() {
-    setState(() {
-    });
+    setState(() {});
   }
 
   @override
@@ -65,23 +76,19 @@ class _HomeScreenState extends State<HomeScreen>with SingleTickerProviderStateMi
               ),
             ),
           ],
-
         ),
         body: DefaultTabController(
             length: 4,
             child: Column(
               children: [
                 Expanded(
-                  child: TabBarView(
-                      controller: tabController,
-                      children: [
+                  child: TabBarView(controller: tabController, children: [
                     AllScreen(),
                     PendingScreen(),
                     ProcessingScreen(),
                     ConformScreen(),
                   ]),
                 ),
-
                 Container(
                   height: 70,
                   decoration: BoxDecoration(
@@ -91,11 +98,9 @@ class _HomeScreenState extends State<HomeScreen>with SingleTickerProviderStateMi
                           topLeft: Radius.circular(20))),
                   child: TabBar(
                     controller: tabController,
-
                     indicatorColor: Color(0xffFFF6F7),
                     onTap: (value) {
-                        tabController?.index = value;
-
+                      tabController?.index = value;
                     },
                     tabs: [
                       _buildTab('images/all.webp', 25, 25, 0),

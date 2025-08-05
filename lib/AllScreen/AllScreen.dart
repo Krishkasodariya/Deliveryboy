@@ -25,8 +25,6 @@ class _AllScreenState extends State<AllScreen> {
     // TODO: implement initState
     super.initState();
     loginController.Getuid();
-    loginController.AllUpdate(ref);
-    loginController.profileUpdate(ref);
     loginController.profileData();
   }
 
@@ -233,10 +231,38 @@ class _AllScreenState extends State<AllScreen> {
                                     scrollDirection: Axis.vertical,
                                     itemBuilder: (context, oindex) {
                                       return Container(
+                                        padding: EdgeInsets.only(bottom: 10),
                                         width: double.infinity,
-                                        height: 80,
+                                        height: 120,
                                         child: Column(
                                           children: [
+                                            Container(
+                                              width: double.infinity,
+                                              height: 25,
+                                              decoration: BoxDecoration(
+                                                  color: loginController
+                                                      .getColor(
+                                                          order['pending'],
+                                                          order['processing'],
+                                                          order['deliver'])
+                                                      .withOpacity(0.3),
+                                                  borderRadius:
+                                                      BorderRadius.only(
+                                                          topLeft:
+                                                              Radius.circular(
+                                                                  15),
+                                                          topRight:
+                                                              Radius.circular(
+                                                                  15))),
+                                              child: Center(
+                                                child: Text(orderData[oindex]["restaurantName"]!=null?
+                                                    "${orderData[oindex]["restaurantName"]}":"Custom Food",
+                                                    style: GoogleFonts.lexend(color: Colors.black45)),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
                                             Row(
                                               children: [
                                                 ClipRRect(
@@ -291,7 +317,7 @@ class _AllScreenState extends State<AllScreen> {
                                                             .center,
                                                     children: [
                                                       Container(
-                                                        width: 145,
+                                                        width: 135,
                                                         child: orderData[oindex]
                                                                     ['name'] !=
                                                                 null
@@ -1028,7 +1054,10 @@ class _AllScreenState extends State<AllScreen> {
                                             order['deliver']),
                                       )),
                                   child: Text(
-                                    "Conform Order",
+                                    loginController.getTextData(
+                                        order['pending'],
+                                        order['processing'],
+                                        order['deliver']),
                                     style: TextStyle(
                                         fontSize: 16, color: Colors.white),
                                   )),
@@ -1050,10 +1079,6 @@ class _AllScreenState extends State<AllScreen> {
         },
       ),
     );
-  }
-
-  void ref() {
-    setState(() {});
   }
 }
 //0xffFC6701  ---pending

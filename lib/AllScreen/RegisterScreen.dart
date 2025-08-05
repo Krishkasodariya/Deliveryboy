@@ -297,8 +297,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       suffixIcon: IconButton(
                                           onPressed: () {
                                             setState(() {});
-                                            obsecurePassword =
-                                                !obsecurePassword;
+                                            obsecurePassword = !obsecurePassword;
                                           },
                                           icon: obsecurePassword
                                               ? Icon(Icons.visibility,
@@ -569,9 +568,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   emailAuthentication(
                                       remail.text,
                                       rpassword.text);
-
-
-
 
                                 }
                               },

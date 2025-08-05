@@ -66,8 +66,7 @@ class LoginController extends GetxController {
 
   Future<void> Getotp() async {
     try {
-      SharedPreferences? sharedPreferences =
-          await SharedPreferences.getInstance();
+      SharedPreferences? sharedPreferences = await SharedPreferences.getInstance();
       if (sharedPreferences != null) {
         checkOtp = sharedPreferences.getBool("checkOtp") ?? false;
         if (checkOtp != null) {
@@ -157,7 +156,8 @@ class LoginController extends GetxController {
 
   Color getColor(bool pending, bool processing, bool deliver) {
     if (pending) {
-      return Color(0xffFC6701);
+      return Color(0xffF1802D);
+      //0xffFC6701
     } else if (processing) {
       return Color(0xff59A8B1);
     } else if (deliver) {
@@ -167,11 +167,24 @@ class LoginController extends GetxController {
     }
   }
 
+  String getTextData(bool pending, bool processing, bool deliver) {
+    if (pending) {
+      return "Pending Order";
+    } else if (processing) {
+      return "Proceesing Order";
+    } else if (deliver) {
+      return "Delivered";
+    } else {
+      return "Conform Order";
+    }
+  }
+
  Color setAppBarColor( TabController? tabController) {
+
     if (tabController!.index == 0) {
       return Color(0xffEF4F5F);
     } else if (tabController.index == 1) {
-      return Color(0xffFC6701);
+      return Color(0xffF1802D);
     } else if (tabController.index == 2) {
       return Color(0xff59A8B1);
     } else if (tabController.index == 3) {
