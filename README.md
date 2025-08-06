@@ -1,4 +1,4 @@
-<h1>🚚 Delivery Order App</h1>
+<h1>🚚 Foodie Dive Delivery Order App</h1>
 
 ### 📦 A Flutter App for Delivery Management
 
@@ -59,7 +59,7 @@ Follow these steps to run the app locally:
 
 ```bash
 # Clone the repository
-git clone https://github.com/Krishkasodariya/Deliveryboy.git
+https://github.com/Krishkasodariya/FoodieDive.git
 
 # Navigate to the project directory
 cd delivery_order
