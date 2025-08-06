@@ -10,7 +10,7 @@
 
 ## 📱 App Preview
 
-<img width="600" alt="App Screenshot" src="https://github.com/user-attachments/assets/a70f3d40-648e-48b0-8ffe-080423209905" />
+<img width="600" alt="App Screenshot" src="https://github.com/user-attachments/assets/0e6ce9f7-dd3d-4ff9-abbf-0daa55a6e237" />
 
 ---
 
