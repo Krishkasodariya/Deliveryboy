@@ -59,7 +59,7 @@ Follow these steps to run the app locally:
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/delivery_order.git
+git clone https://github.com/Krishkasodariya/Deliveryboy.git
 
 # Navigate to the project directory
 cd delivery_order
